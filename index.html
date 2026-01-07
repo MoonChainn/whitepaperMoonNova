@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>MoonNova Whitepaper</title>
 
-  <!-- BẮT BUỘC CHO IN-APP BROWSER -->
+  <!-- FIX IN-APP BROWSER -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light">
   <meta name="supported-color-schemes" content="light">
@@ -19,18 +19,45 @@
       width: 100%;
       height: 100%;
       background: #ffffff !important;
-      overflow: hidden;
     }
 
-    embed {
+    iframe, object {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       border: none;
       background: #ffffff;
+    }
+
+    .fallback {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      font-family: Arial, sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .fallback {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <embed src="MoonNova_Whitepaper_v1.pdf" type="application/pdf" />
+
+  <!-- ƯU TIÊN IFRAME -->
+  <iframe src="MoonNova_Whitepaper_v1.pdf"></iframe>
+
+  <!-- FALLBACK CHO TRÌNH DUYỆT KHÔNG LOAD PDF -->
+  <object data="MoonNova_Whitepaper_v1.pdf" type="application/pdf">
+    <div class="fallback">
+      <p>PDF preview is not supported in this browser.</p>
+      <p>
+        <a href="MoonNova_Whitepaper_v1.pdf" target="_blank">
+          👉 Tap here to open the Whitepaper
+        </a>
+      </p>
+    </div>
+  </object>
+
 </body>
 </html>
